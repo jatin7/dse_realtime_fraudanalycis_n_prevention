@@ -202,7 +202,7 @@ When we start generating some live data we'll be able to analyse up-to-date info
 SELECT * FROM rtfap.transactions where solr_query = '{"q":"*:*", "fq":["txn_time:[NOW-1MINUTE TO *]", "tags:Fraudulent"]}';
 ```
 These samples demonstrate that full, ad-hoc search on any of the transaction fields is possible including amounts, merchants etc.
-We will use queries like this to build the ReST interface. You can use cqlsh to explore the list of provided ReST queries here: http://github.com/simonambridge/RTFAP2/tree/master/Solr_Queries.md 
+We will use queries like this to build the ReST interface. You can use cqlsh to explore the list of provided ReST queries here: https://github.com/jatin7/dse_realtime_fraudanalycis_n_prevention/tree/master/Solr_Queries.md 
 
 ## Querying Data Using A ReST API with Node.js and D3
 
@@ -236,7 +236,7 @@ The streaming analytics element of this application is made up of two parts:
 
 Streaming analytics code can be found under the directory `TransactionHandlers/producer` (pre-requisite: make sure you have run the CQL schema create script as described above to create the necessary tables).
 
-Follow the Spark streaming installation and set up instructions here: https://github.com/simonambridge/RTFAP2/tree/master/TransactionHandlers/README.md
+Follow the Spark streaming installation and set up instructions here: https://github.com/jatin7/dse_realtime_fraudanalycis_n_prevention/tree/master/TransactionHandlers/README.md
 
 ### Batch Analytics
 
@@ -246,7 +246,7 @@ Two Spark batch jobs have been included.
 
 The roll up batch analytics code and submit scripts can be found under the directory `RollUpReports` (pre-requisite: run the streaming analytics first in order to populate the Transaction table with transactions).
 
-Follow the Spark batch job installation and set up instructions here:https://github.com/simonambridge/RTFAP2/tree/master/RollUpReports/README.md
+Follow the Spark batch job installation and set up instructions here:https://github.com/jatin7/dse_realtime_fraudanalycis_n_prevention/tree/master/RollUpReports/README.md
 
 At this point the system should be setup and functioning. Now you'll want to know what the capabilities of this platform are so that you can begin to understand what kind of hardware you might need to build a real system. We can use the Cassandra Stress Tool to help us measure.
 
@@ -256,7 +256,7 @@ Running a cassandra-stress test with the appropriate YAML profile for the table 
 
 You can read more about using stress yamls to stress test a data model  [here](http://www.datastax.com/dev/blog/improved-cassandra-2-1-stress-tool-benchmark-any-schema) and [here](http://docs.datastax.com/en/cassandra/2.1/cassandra/tools/toolsCStress_t.html).
 
-The stress YAML files are in the [stress_yamls directory](https://github.com/simonambridge/RTFAP2/tree/master/stress_yamls).
+The stress YAML files are in the [stress_yamls directory](https://github.com/jatin7/dse_realtime_fraudanalycis_n_prevention/tree/master/stress_yamls).
 
 The stress tool will inject synthetic data so we will use a different table specifically for the stress testing.
 
@@ -266,7 +266,7 @@ The YAML tries to mirror real data, for example: month is a value between 1 and 
 
 cassandra-stress generates a lot of output as it repeatedly runs the write test (10,000 records) while increasing the number of threads. This allows you to view the optimum number of threads required to run the task.
 
-An example of running the stress tool is shown below using [txn_by_cc_stress.yaml](https://github.com/simonambridge/RTFAP2/blob/master/stress_yamls/txn_by_cc_stress.yaml):
+An example of running the stress tool is shown below using [txn_by_cc_stress.yaml](https://github.com/jatin7/dse_realtime_fraudanalycis_n_prevention/blob/master/stress_yamls/txn_by_cc_stress.yaml):
 
 For inserts
 ```
@@ -380,7 +380,7 @@ cassandra-stress user profile=./txn_by_cc_stress.yaml ops\(singletrans=1\) -node
 cassandra-stress user profile=./txn_by_cc_stress.yaml ops\(dailytrans=1\) -node 127.0.0.1
 
 ```
-Examples are provided for [read](https://github.com/simonambridge/RTFAP2/blob/master/stress_yamls/stress-read.log) and [write](https://github.com/simonambridge/RTFAP2/blob/master/stress_yamls/stress-write.log) stress tests from my Mac Pro.
+Examples are provided for [read](https://github.com/jatin7/dse_realtime_fraudanalycis_n_prevention/blob/master/stress_yamls/stress-read.log) and [write](https://github.com/jatin7/dse_realtime_fraudanalycis_n_prevention/blob/master/stress_yamls/stress-write.log) stress tests from my Mac Pro.
 
 ## Visual Dashboard - Lucidworks Banana
 
@@ -388,11 +388,11 @@ The Banana project was forked from Kibana, and works with all kinds of time seri
 
 Banana allows you to create rich and flexible UIs, enabling users to rapidly develop end-to-end applications that leverage the power of Apache Solr.
 
-Follow this [guide](https://github.com/simonambridge/RTFAP2/tree/master/banana/Banana_Setup.md) to set it up.
+Follow this [guide](https://github.com/jatin7/dse_realtime_fraudanalycis_n_prevention/tree/master/banana/Banana_Setup.md) to set it up.
 
 The dashboard below was created using Banana.
 
-![alt dashboard](https://github.com/simonambridge/RTFAP2/blob/master/banana/TransactionDashboard.png)
+![alt dashboard](https://github.com/jatin7/dse_realtime_fraudanalycis_n_prevention/blob/master/banana/TransactionDashboard.png)
 
 
 <sub>Acknowldegements: Based on the original RTFAP created with help from colleagues at DataStax.
