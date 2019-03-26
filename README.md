@@ -217,7 +217,7 @@ A ReSTful web interface provides an API for calling programs to query the data i
 </p>
 You can use a web browser interface to run the queries. Use the example url’s supplied - these will return a json representation of the data using the ReST service. ALternatively you can paste the queries into cqlsh and run them from there.
 
-The ReST Server set up details are described here: http://github.com/simonambridge/RTFAP2/tree/master/ReST.md
+The ReST Server set up details are described here: https://github.com/jatin7/dse_realtime_fraudanalycis_n_prevention/tree/master/ReST.md
 
 The nexy section moves on to batch and streaming analytics with Spark!
 
