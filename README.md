@@ -155,7 +155,7 @@ dsetool create_core rtfap.transactions generateResources=true reindex=true
 Navigate to the Solr directory to create the Solr cores for our transaction data.
 
 ```
-$ cd solr
+$ cd Solr
 $ ls
 build_solr_indexes.sh	transactions.xml	txn_count_min.xml
 ```
